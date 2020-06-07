@@ -3,27 +3,61 @@
     <head>
         <link rel="stylesheet" href="style.css"/>
         <script src="js.js"></script>
-        <title>Super Álvaro Bros</title>
+        <title>Super Álvaro Bros 0.1</title>
     </head>
     <body>
 
         <header>
-			<h1>Super Álvaro Bros</h1>
+			<h1>Super Álvaro Bros vs Coronavirus</h1>
 		</header>
 
-        <div style="margin-top: 50px;"></div>
+        <div style="margin-top: 20px;"></div>
 
-        <canvas id="canvas1" width="800" height="480"></canvas>
+        <div class = "puntuation">
+            <h3 class="Points"> SCORE </h1>
+            <h3 id="points">0</h1>
+        </div>
 
-        <div style="margin-top: 50px;"></div>
+        <div style="margin-top: 20px;"></div>
 
-    	<div id="game_buttons">
-    			<button id='start' >Start</button>
-    			<button id='pause' >Pause</button>
-    			<button id='reset' >Reset</button>
-    	</div>
+        <canvas id="canvas1" width="720" height="480"></canvas>
 
-        <h2 id="uuu"></h2>
+        <div style="margin-top: 20px;"></div>
+
+        <div class = "text">
+            <div>Select your player with <span class="bold">↑</span> and <span class="bold">↓</span>. Then click <span class="bold">ENTER</span>.</div>
+            <div><span class="bold">W</span> or <span class="bold">↑</span> to jump, <span class="bold">P</span> to pause, <span class="bold">R</span> to reset.</div>
+            <div>The more you jump the more points you get!!</div>
+        </div>
+
+        <div id='sprites'> <!-- sprites -->
+            <img id='mario1'src="sprites/mario1.png" alt="mario1">
+            <img id='mario2'src="sprites/mario2.png" alt="mario2">
+            <img id='mario3'src="sprites/mario3.png" alt="mario3">
+            <img id='mario4'src="sprites/mario4.png" alt="mario4">
+            <img id='alvaro1'src="sprites/alvaro1.png" alt="alvaro1">
+            <img id='alvaro2'src="sprites/alvaro2.png" alt="alvaro2">
+            <img id='alvaro3'src="sprites/alvaro3.png" alt="alvaro3">
+            <img id='alvaro4'src="sprites/alvaro4.png" alt="alvaro4">
+            <img id='david1'src="sprites/david1.png" alt="david1">
+            <img id='david2'src="sprites/david2.png" alt="david2">
+            <img id='david3'src="sprites/david3.png" alt="david3">
+            <img id='david4'src="sprites/david4.png" alt="david4">
+            <img id='luis1'src="sprites/luis1.png" alt="luis1">
+            <img id='luis2'src="sprites/luis2.png" alt="luis2">
+            <img id='luis3'src="sprites/luis3.png" alt="luis3">
+            <img id='luis4'src="sprites/luis4.png" alt="luis4">
+            <img id='pablo1'src="sprites/pablo1.png" alt="pablo1">
+            <img id='pablo2'src="sprites/pablo2.png" alt="pablo2">
+            <img id='pablo3'src="sprites/pablo3.png" alt="pablo3">
+            <img id='pablo4'src="sprites/pablo4.png" alt="pablo4">
+        </div>
 
     </body>
 </html>
+<!--
+    	<div id="game_buttons">
+    			<button id='pause'>Pause</button>
+    			<button id='reset'>Reset</button>
+    	</div>
+-->
