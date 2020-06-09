@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="style.css"/>
         <script src="js.js"></script>
-        <title>Super Álvaro Bros 0.1</title>
+        <title>Super Álvaro Bros 0.2</title>
     </head>
     <body>
 
@@ -11,18 +11,18 @@
 			<h1>Super Álvaro Bros vs Coronavirus</h1>
 		</header>
 
-        <div style="margin-top: 20px;"></div>
+        <div id = "space1" style="margin-top: 20px;"></div>
 
         <div class = "puntuation">
             <h3 class="Points"> SCORE </h1>
             <h3 id="points">0</h1>
         </div>
 
-        <div style="margin-top: 20px;"></div>
+        <div id = "space2" style="margin-top: 20px;"></div>
 
-        <canvas id="canvas1" width="720" height="480"></canvas>
+        <canvas id = "canvas1" width="720" height="480"></canvas>
 
-        <div style="margin-top: 20px;"></div>
+        <div id = "space3" style="margin-top: 20px;"></div>
 
         <div class = "text">
             <div>Select your player with <span class="bold">↑</span> and <span class="bold">↓</span>. Then click <span class="bold">ENTER</span>.</div>
@@ -30,11 +30,47 @@
             <div>The more you jump the more points you get!!</div>
         </div>
 
+        <div id = "selecting_buttons">
+            <div  class = "row">
+                <div class="col-4">
+                    <div class = "row">
+                        <div class="col-12">
+                            <button id = "arrow_up">↑</button>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class="col-12">
+                            <button id = "arrow_down">↓</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <button id = "enter">ENTER</button>
+                </div>
+            </div>
+        </div>
+
+        <div id = "playing_buttons">
+            <div id = "playing_buttons" class = "row">
+                <div class="col-4">
+                    <div class = "row">
+                        <div class="col-12">
+                            <button id = "reset">RESET</button>
+                        </div>
+                    </div>
+                    <div class = "row">
+                        <div class="col-12">
+                            <button id = "pause">PAUSE</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <button id = "jump">JUMP</button>
+                </div>
+            </div>
+        </div>
+
         <div id='sprites'> <!-- sprites -->
-            <img id='mario1'src="sprites/mario1.png" alt="mario1">
-            <img id='mario2'src="sprites/mario2.png" alt="mario2">
-            <img id='mario3'src="sprites/mario3.png" alt="mario3">
-            <img id='mario4'src="sprites/mario4.png" alt="mario4">
             <img id='alvaro1'src="sprites/alvaro1.png" alt="alvaro1">
             <img id='alvaro2'src="sprites/alvaro2.png" alt="alvaro2">
             <img id='alvaro3'src="sprites/alvaro3.png" alt="alvaro3">
@@ -55,9 +91,3 @@
 
     </body>
 </html>
-<!--
-    	<div id="game_buttons">
-    			<button id='pause'>Pause</button>
-    			<button id='reset'>Reset</button>
-    	</div>
--->

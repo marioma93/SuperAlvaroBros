@@ -3,16 +3,32 @@
 header {
 	margin: 2px;
 	border: 4px solid black;
-	border-radius: 8px;
 	text-align: center;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+@media (orientation: landscape) {
+	header {
+		border-radius: 8px;
+	}
 }
 /******************************************************************************/
-.puntuation {
-	width: 50%;
-	margin-left: auto;
-	margin-right: auto;
-	border: 4px solid black;
-	border-radius: 8px;
+@media (orientation: landscape) {
+	.puntuation {
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+		border: 4px solid black;
+		border-radius: 8px;
+	}
+}
+@media (orientation: portrait) {
+	.puntuation {
+		border-bottom: 2px solid black;
+		border-left: 4px solid black;
+		border-right: 4px solid black;
+	}
 }
 .Points {
 	display: inline-block;
@@ -31,11 +47,21 @@ header {
 	margin-left: auto;
 	margin-right: auto;
 }
+@media (orientation: portrait) {
+	#canvas1 {
+		width: 100%;
+	}
+}
 /******************************************************************************/
 .text {
 	width: 50%;
 	margin-left: auto;
 	margin-right: auto;
+}
+@media (orientation: portrait) {
+	.text {
+		display: none;
+	}
 }
 .text div {
 	text-align: center;
@@ -43,6 +69,35 @@ header {
 }
 .bold {
 	font-weight: bold;
+}
+/******************************************************************************/
+#selecting_buttons, #playing_buttons {
+	width: 100%;
+}
+@media (orientation: landscape) {
+	#selecting_buttons, #playing_buttons {
+		display: none;
+	}
+}
+.row, .col-4, .col-8, .col-12 {
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 0px;
+}
+button {
+	width: 100%;
+}
+#arrow_up, #arrow_down, #reset, #pause {
+	height: 50px;
+}
+#enter, #jump {
+	height: 100px;
+}
+/******************************************************************************/
+@media (orientation: portrait) {
+	#space1, #space2, #space3 {
+		display: none;
+	}
 }
 /******************************************************************************/
 #sprites {

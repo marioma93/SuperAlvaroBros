@@ -1,5 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+////////////////////////////////////////////////////////////////////////////////
+
+let orientation = window.matchMedia("(orientation:landscape)");
+let is_portrait = !orientation.matches;
+/*
+    if (orientation.matches) {
+        //document.querySelector('.computer').style.display = 'block';
+        //document.querySelector('.mobile').style.display = 'none';
+    } else {
+        //document.querySelector('.computer').style.display = 'none';
+        //document.querySelector('.mobile').style.display = 'block';
+    };
+*/
 //VARIABLES/////////////////////////////////////////////////////////////////////
 
     const context = document.getElementById("canvas1").getContext("2d");
@@ -69,10 +82,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const gameover_overlap = 5;
 
 //SPRITE VARIABLES//////////////////////////////////////////////////////////////
-    const mario1 = document.getElementById('mario1');
-    const mario2 = document.getElementById('mario2');
-    const mario3 = document.getElementById('mario3');
-    const mario4 = document.getElementById('mario4');
     const alvaro1 = document.getElementById('alvaro1');
     const alvaro2 = document.getElementById('alvaro2');
     const alvaro3 = document.getElementById('alvaro3');
@@ -120,6 +129,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    document.querySelector('#jump').onclick = function () {
+        if (step == 2) {
+            jump = true;
+        }
+    };
+    ////////////////////////////////////////////////////////////////////////////
     document.addEventListener ('keydown', function (e) { //PAUSE
         if (e.keyCode == 80) { //p key = 80
             if (step == 2) {
@@ -127,6 +142,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    document.querySelector('#pause').onclick = function () {
+        if (step == 2) {
+            pause_game ();
+        }
+    };
+    ////////////////////////////////////////////////////////////////////////////
     document.addEventListener ('keydown', function (e) { //RESET
         if (e.keyCode == 82) { //r key = 82
             if (step == 2 || step == 3) {
@@ -134,6 +155,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    document.querySelector('#reset').onclick = function () {
+        if (step == 2 || step == 3) {
+            reset_game ();
+        }
+    };
+    ////////////////////////////////////////////////////////////////////////////
     document.addEventListener ('keydown', function (e) { //SELECT PERSON UP
         if (e.keyCode == 38) { //arrow up
             if (step == 1) {
@@ -144,6 +171,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    document.querySelector('#arrow_up').onclick = function () {
+        if (step == 1) {
+            if (selecting_person > 1) {
+                selecting_person--;
+                select_person_loop ();
+            }
+        }
+    };
+    ////////////////////////////////////////////////////////////////////////////
     document.addEventListener ('keydown', function (e) { //SELECT PERSON DOWN
         if (e.keyCode == 40) { //arrow down
             if (step == 1) {
@@ -154,6 +190,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    document.querySelector('#arrow_down').onclick = function () {
+        if (step == 1) {
+            if (selecting_person < 4) {
+                selecting_person++;
+                select_person_loop ();
+            }
+        }
+    };
+    ////////////////////////////////////////////////////////////////////////////
     document.addEventListener ('keydown', function (e) { //SELECT PERSON ENTER
         if (e.keyCode == 13) { //enter
             if (step == 1) {
@@ -212,6 +257,74 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+    document.querySelector('#enter').onclick = function () {
+        if (step == 1) {
+            step = 2;
+            switch (selecting_person) {
+                case 1:
+                    person1 = alvaro1;
+                    person2 = alvaro2;
+                    person3 = alvaro3;
+                    person4 = alvaro4;
+                    person_width = short_person_width;
+                    person_height = short_person_height;
+                    person_speed = 5;
+                    person_v0 = -300;
+                    person_a = 150;
+                    break;
+                case 2:
+                    person1 = david1;
+                    person2 = david2;
+                    person3 = david3;
+                    person4 = david4;
+                    person_width = tall_person_width;
+                    person_height = tall_person_height;
+                    person_speed = 7;
+                    person_v0 = -650;
+                    person_a = 400;
+                    break;
+                case 3:
+                    person1 = luis1;
+                    person2 = luis2;
+                    person3 = luis3;
+                    person4 = luis4;
+                    person_width = short_person_width;
+                    person_height = short_person_height;
+                    person_speed = 5;
+                    person_v0 = -300;
+                    person_a = 150;
+                    break;
+                case 4:
+                    person1 = pablo1;
+                    person2 = pablo2;
+                    person3 = pablo3;
+                    person4 = pablo4;
+                    person_width = short_person_width;
+                    person_height = short_person_height;
+                    person_speed = 5;
+                    person_v0 = -650;
+                    person_a = 400;
+                    break;
+            }
+            person_x1 = person_x0 + person_width - 1;
+            person_y0 = sky_height - person_height;
+            person_y1 = sky_height + jump_difference - 1;
+            jump_array = createJumpArray (person_y0, person_v0, person_a, t_int);
+            start_game ();
+        }
+    };
+
+//BUTTONS////////////////////////////////////////////////////
+    function check_buttons () {
+        if (is_portrait && step == 1) {
+            document.querySelector('#selecting_buttons').style.display = 'block';
+            document.querySelector('#playing_buttons').style.display = 'none';
+        };
+        if (is_portrait && step >= 2) {
+            document.querySelector('#selecting_buttons').style.display = 'none';
+            document.querySelector('#playing_buttons').style.display = 'block';
+        };
+    }
 
 //STEP 1: SELECT PERSON LOOP////////////////////////////////////////////////////
     function select_person_loop () {
@@ -294,6 +407,7 @@ function last (array) {
 
 //STEP 2: OPTIONS///////////////////////////////////////////////////////////////
     function start_game () {
+        check_buttons ();
         if (step == 2) {
             if (paused) {
                 paused = false;
@@ -303,10 +417,12 @@ function last (array) {
         }
     }
     function pause_game () {
+        check_buttons ();
         paused = !paused;
         window.requestAnimationFrame(loop);
     }
     function reset_game () {
+        check_buttons ();
         location.reload()
     }
 
@@ -429,8 +545,8 @@ function last (array) {
     }
 
 ////////////////////////////////////////////////////////////////////////////////
+    check_buttons ();
     select_person_loop ();
     new_enemy = new Enemy (canvas_width, 150, 1, enemy1);
     enemies.push (new_enemy);
-
 });
