@@ -88,10 +88,10 @@ button {
 	width: 100%;
 }
 #arrow_up, #arrow_down, #reset, #pause {
-	height: 50px;
+	height: 250px;
 }
 #enter, #jump {
-	height: 100px;
+	height: 500px;
 }
 /******************************************************************************/
 @media (orientation: portrait) {
