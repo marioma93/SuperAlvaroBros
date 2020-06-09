@@ -324,6 +324,10 @@ let is_portrait = !orientation.matches;
             document.querySelector('#selecting_buttons').style.display = 'none';
             document.querySelector('#playing_buttons').style.display = 'block';
         };
+        if (!is_portrait) {
+            document.querySelector('#selecting_buttons').style.display = 'none';
+            document.querySelector('#playing_buttons').style.display = 'none';
+        };
     }
 
 //STEP 1: SELECT PERSON LOOP////////////////////////////////////////////////////
